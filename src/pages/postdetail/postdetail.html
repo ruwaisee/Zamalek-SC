@@ -1,0 +1,21 @@
+<ion-header>
+
+        <ion-navbar color="danger">
+            <ion-title>{{selectedItem.title.rendered}}</ion-title>
+        </ion-navbar>
+    
+    </ion-header>
+    
+    <ion-content padding>
+        <div *ngIf="selectedItem" class="selection">
+            <P> <img [src]="selectedItem.featured_image_urls.medium">
+            </P>
+            <ion-item>
+                    <ion-icon name="person" item-left></ion-icon>
+                        Author
+                        <ion-note>{{selectedItem.author_meta.user_nicename}}</ion-note>
+                </ion-item>
+            <h2 [innerHTML]="selectedItem.title.rendered"></h2>
+            <div [innerHTML]="selectedItem.content.rendered"></div>
+        </div>
+    </ion-content>

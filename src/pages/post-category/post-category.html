@@ -1,0 +1,34 @@
+<ion-header>
+
+    <ion-navbar color="danger">
+        <ion-buttons>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+       
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list *ngFor="let post of posts" (click)="postTapped($event, post)" class="cardList">
+        <ion-card-content class="innerContent"> 
+          <ion-grid>
+            <ion-row class="entityParams">
+               <ion-col class="img" col-2><img id="roundpic" src="{{post.featured_image_urls.thumbnail}}" class="thumbs" />
+               </ion-col>
+                <ion-col col-10 class="ParamsInner">         
+                </ion-col>
+            </ion-row>
+            <ion-row class="ptb">
+              <span [innerHTML]="post.title.rendered" class="postTitle"></span>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-list>  
+<ion-infinite-scroll (ionInfinite)="doInfinite(infiniteScroll)" >
+     <ion-infinite-scroll-content ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

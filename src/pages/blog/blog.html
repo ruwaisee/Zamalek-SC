@@ -1,0 +1,46 @@
+<ion-header>
+
+        <ion-navbar color="danger">
+            <ion-buttons>
+                <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                </button>
+            </ion-buttons>
+            <ion-title>Blog</ion-title>
+        </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content class="card-background-page" padding>
+
+            <ion-slides autoplay="5000" loop="true" speed="4000">
+                    <ion-slide>
+                            <img src="../../assets/imgs/zamalekBG1.jpg"/>
+                            <div class="card-title">ZAmalek SC</div>
+                            <div class="card-subtitle">1902</div>
+                    </ion-slide>
+                    <ion-slide>
+                            <img src="../../assets/imgs/zamalekbg2.jpg"/>
+                            <div class="card-title">ZAmalek SC</div>
+                            <div class="card-subtitle">1902</div>
+                    </ion-slide>
+                    
+                  </ion-slides>
+    
+     <ion-list>
+            
+        <ion-item *ngFor="let item of items" (click)="itemTapped($event,item)">         
+                    <ion-thumbnail>
+                         <img [src]="item.featured_image_urls.thumbnail" item-left/>
+                    </ion-thumbnail>
+                        <h2>{{item.title.rendered}}</h2> 
+                <p [innerHTML]="item.excerpt.rendered"></p>      
+            </ion-item>
+        </ion-list>
+    
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+     <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+    </ion-content>

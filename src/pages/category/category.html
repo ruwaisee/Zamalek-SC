@@ -1,0 +1,39 @@
+<ion-header>
+        <ion-navbar color="danger">
+            <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+            <ion-title>{{title}}</ion-title>
+        </ion-navbar>
+    </ion-header>
+    
+    
+    <ion-content padding>
+    
+        <ion-list *ngFor="let data of datas">
+            <ion-card>
+    
+                <div *ngFor="let thumbnail of data._embedded['wp:featuredmedia']">
+                    <img [src]="thumbnail.source_url" />
+                </div>
+                <ion-item *ngFor="let author of data._embedded.author">
+                    <ion-avatar item-left>
+                        <img [src]="author.avatar_urls['24']" />
+                    </ion-avatar>
+                    <h1>{{author.name}}</h1>
+                    <p>
+                        {{data.date | date:'dd/MM/yyyy'}}
+                    </p>
+                </ion-item>
+                <button ion-button full color="danger" *ngFor="let link of data._links.self" (click)="openSingle(link.href, data.title.rendered)">Read More</button>
+    
+            </ion-card>
+        </ion-list>
+    </ion-content>
+
+<ion-content padding>
+        <ion-infinite-scroll (ionInfinite)="doInfinite(infiniteScroll)" >
+                <ion-infinite-scroll-content ></ion-infinite-scroll-content>
+               </ion-infinite-scroll>
+
+</ion-content>

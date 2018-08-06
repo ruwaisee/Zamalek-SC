@@ -1,0 +1,7 @@
+{
+  "name": "zamalek",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

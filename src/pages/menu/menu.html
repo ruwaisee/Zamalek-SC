@@ -1,0 +1,36 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-navbar color="danger">
+            <button ion-button menuToggle>
+                <ion-icon name="home"></ion-icon>
+              </button>
+            <ion-title>{{title}}</ion-title>
+        </ion-navbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-item class="item item-trns">
+        <ion-list>
+            <button ion-item *ngFor="let p of Tabs" text-wrap (click)="openPage(p)" menuClose>
+              <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+                <h2> {{ p.title }} </h2>
+
+            </button>
+        </ion-list>
+        </ion-item>
+        <ion-list>
+            <button ion-item *ngFor="let c of categories" text-wrap (click)="openCategory(c)" menuClose>
+                    <h2> {{ c.title }} </h2>
+    
+                </button>
+        </ion-list>
+        <img src="../../assets/imgs/zamalek1.jpg">
+        <ion-item>
+
+            </ion-item>
+
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
